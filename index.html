@@ -1,0 +1,347 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Enzo Mitjavila | Mechanical engineering e-portfolio</title>
+  <meta name="description" content="Mechanical engineering student at Cornell. Projects in Formula 1 aerodynamics: CFD, wind-tunnel experiments and lap-time simulation.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Archivo:wdth,wght@62..125,500..900&family=Public+Sans:wght@400;500;600&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --ink: #0d1b2a;
+      --ink-2: #1b2b3d;
+      --paper: #f2f5f7;
+      --paper-2: #e4eaee;
+      --stream: #2fb8c9;
+      --signal: #d9480f;
+      --muted: #566676;
+      --line: #c9d3da;
+      --radius: 6px;
+    }
+    @media (prefers-color-scheme: dark) {
+      :root {
+        --paper: #0d1b2a;
+        --paper-2: #14263a;
+        --ink: #f2f5f7;
+        --ink-2: #d5dde3;
+        --muted: #93a4b3;
+        --line: #26394d;
+        --signal: #ff6a2b;
+      }
+    }
+    * { box-sizing: border-box; }
+    html { scroll-behavior: smooth; }
+    body {
+      margin: 0;
+      background: var(--paper);
+      color: var(--ink);
+      font-family: "Public Sans", system-ui, sans-serif;
+      line-height: 1.65;
+      font-size: 1.0625rem;
+    }
+    h1, h2, h3 {
+      font-family: "Archivo", system-ui, sans-serif;
+      line-height: 1.08;
+      margin: 0;
+      letter-spacing: -0.01em;
+    }
+    a { color: inherit; }
+    a:focus-visible, button:focus-visible {
+      outline: 3px solid var(--signal);
+      outline-offset: 3px;
+    }
+    .wrap { max-width: 1080px; margin: 0 auto; padding: 0 1.5rem; }
+
+    header.site {
+      display: flex; justify-content: space-between; align-items: center;
+      padding: 1.25rem 0;
+      border-bottom: 1px solid var(--line);
+    }
+    header.site .brand { font-family: "Archivo"; font-weight: 800; font-size: 1.25rem; text-decoration: none; }
+    header.site nav { display: flex; gap: 1.5rem; flex-wrap: wrap; }
+    header.site nav a { text-decoration: none; color: var(--muted); font-weight: 500; }
+    header.site nav a:hover { color: var(--ink); }
+
+    .hero { padding: 4rem 0 3rem; display: grid; grid-template-columns: 1.1fr 1fr; gap: 2rem; align-items: center; }
+    .hero h1 { font-size: clamp(2.6rem, 6.5vw, 4.8rem); font-weight: 900; font-stretch: 80%; }
+    .hero p.lead { font-size: 1.2rem; color: var(--ink-2); max-width: 36ch; margin: 1.5rem 0 2rem; }
+    .btn {
+      display: inline-block; padding: 0.8rem 1.4rem; border-radius: var(--radius);
+      background: var(--signal); color: #fff; font-weight: 600; text-decoration: none;
+      transition: transform .15s ease;
+    }
+    .btn:hover { transform: translateY(-2px); }
+    .btn.ghost { background: transparent; color: var(--ink); border: 1.5px solid var(--line); margin-left: .5rem; }
+
+    .airflow { width: 100%; height: auto; }
+    .airflow .flow {
+      fill: none; stroke: var(--stream); stroke-width: 2; stroke-linecap: round;
+      stroke-dasharray: 10 14;
+      animation: drift 2.4s linear infinite;
+    }
+    .airflow .flow.fast { stroke: var(--signal); animation-duration: 1.4s; }
+    .airflow .wing { fill: var(--ink); }
+    .airflow .flap { fill: var(--signal); }
+    @keyframes drift { to { stroke-dashoffset: -48; } }
+    .airflow-photo { position: relative; }
+    .airflow-photo img { width: 100%; height: auto; display: block; border-radius: 6px; }
+    .airflow-photo svg { position: absolute; inset: 0; width: 100%; height: 100%; }
+    .airflow-photo .flow {
+      fill: none; stroke: #fff; stroke-opacity: .85; stroke-width: 2;
+      stroke-linecap: round; stroke-dasharray: 10 14;
+      animation: drift 2.4s linear infinite;
+    }
+    @media (prefers-reduced-motion: reduce) { .airflow-photo .flow { animation: none; } }
+
+    @media (prefers-reduced-motion: reduce) {
+      .airflow .flow { animation: none; }
+      html { scroll-behavior: auto; }
+    }
+
+    section { padding: 4rem 0; border-top: 1px solid var(--line); }
+    section h2 { font-size: clamp(1.8rem, 4vw, 2.6rem); font-weight: 800; font-stretch: 85%; margin-bottom: 1.5rem; }
+    .two-col { display: grid; grid-template-columns: 1fr 1.4fr; gap: 3rem; }
+    .two-col p { margin: 0 0 1rem; max-width: 62ch; }
+
+    .featured { background: var(--paper-2); border-radius: var(--radius); padding: 2rem; border-left: 6px solid var(--signal); margin-bottom: 2.5rem; }
+    .featured h3, .project h3 { font-size: 1.7rem; font-weight: 800; font-stretch: 85%; margin-bottom: .5rem; }
+    .featured p, .project p { max-width: 68ch; }
+    .tags { display: flex; flex-wrap: wrap; gap: .5rem; margin: 1rem 0 1.25rem; padding: 0; list-style: none; }
+    .tags li { font-size: .85rem; padding: .2rem .65rem; border: 1px solid var(--line); border-radius: 999px; color: var(--ink-2); }
+    table { width: 100%; border-collapse: collapse; margin: 1.5rem 0; font-size: .98rem; }
+    caption { text-align: left; font-weight: 600; padding-bottom: .5rem; }
+    th, td { text-align: left; padding: .7rem .8rem; border-bottom: 1px solid var(--line); vertical-align: top; }
+    th { font-weight: 600; color: var(--muted); }
+    .table-scroll { overflow-x: auto; }
+
+    .project { padding: 2rem 0; border-top: 1px solid var(--line); display: grid; grid-template-columns: 200px 1fr; gap: 2rem; }
+    .project:first-of-type { border-top: 0; }
+    .project .meta { color: var(--muted); font-size: .95rem; }
+    .project ul { margin: .75rem 0 1rem; padding-left: 1.1rem; color: var(--ink-2); }
+    .project li { margin-bottom: .35rem; }
+    .link { font-weight: 600; text-decoration-color: var(--stream); text-underline-offset: 4px; }
+    .note { font-size: .92rem; color: var(--muted); max-width: 68ch; }
+
+    .timeline { display: grid; gap: 1.75rem; }
+    .entry { display: grid; grid-template-columns: 200px 1fr; gap: 2rem; }
+    .entry .when { color: var(--muted); font-size: .95rem; }
+    .entry h3 { font-size: 1.15rem; font-weight: 700; margin-bottom: .25rem; }
+    .entry p, .entry ul { margin: .25rem 0 0; color: var(--ink-2); }
+    .entry ul { padding-left: 1.1rem; }
+
+    .skills { display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 2rem; }
+    .skills h3 { font-size: 1.1rem; margin-bottom: .6rem; }
+    .skills ul { margin: 0; padding-left: 1.1rem; color: var(--ink-2); }
+
+    .contact a.big { font-family: "Archivo"; font-weight: 800; font-size: clamp(1.4rem, 4vw, 2.2rem); text-decoration-color: var(--signal); text-underline-offset: 6px; word-break: break-all; }
+    footer { padding: 2rem 0 3rem; color: var(--muted); font-size: .9rem; border-top: 1px solid var(--line); }
+
+    @media (max-width: 820px) {
+      .hero, .two-col, .project, .entry { grid-template-columns: 1fr; gap: .75rem; }
+      header.site nav { gap: 1rem; }
+    }
+  </style>
+</head>
+<body>
+  <div class="wrap">
+    <header class="site">
+      <a class="brand" href="#top">Enzo Mitjavila</a>
+      <nav aria-label="Main">
+        <a href="#about">About</a>
+        <a href="#projects">Projects</a>
+        <a href="#experience">Experience</a>
+        <a href="#skills">Skills</a>
+        <a href="#contact">Contact</a>
+      </nav>
+    </header>
+
+    <main id="top">
+      <div class="hero">
+        <div>
+          <h1>My motorsport personal projects so far</h1>
+          <p class="lead">Mechanical engineering student at Cornell. I use CFD, simple experiments and code to test aerodynamic ideas.</p>
+          <a class="btn" href="#projects">See my projects</a>
+          <a class="btn ghost" href="#contact">Get in touch</a>
+        </div>
+
+        <div class="airflow-photo">
+          <img src="flow.png" alt="CFD streamlines around the rear wing">
+          <svg viewBox="0 0 1050 600" aria-hidden="true">
+            <path class="flow" d="M0 60 C300 70 500 100 1050 40"/>
+            <path class="flow" d="M0 140 C250 150 350 200 450 230 S800 190 1050 120"/>
+            <path class="flow" d="M0 200 C200 205 300 270 380 262 C560 245 800 215 1050 170"/>
+            <path class="flow" d="M0 430 C200 440 330 410 420 385 C600 350 850 380 1050 340"/>
+            <path class="flow" d="M0 520 C300 520 600 500 1050 480"/>
+          </svg>
+        </div>
+      </div>
+
+      <section id="about">
+        <div class="two-col">
+          <h2>About me</h2>
+          <div>
+            <p>I'm Enzo, a Mechanical Engineering student at Cornell University (Class of 2030). I grew up in Barcelona and finished the International Baccalaureate there before moving to Ithaca, New York.</p>
+            <p>Formula 1 is how I got into engineering. My projects look at aerodynamics from three angles: a hands-on wind-tunnel experiment, CFD simulations of whole cars, and a rear wing I designed and tested from scratch.</p>
+            <p>I also build software. As an intern I helped develop an AI-powered tool that analyses financial models in Excel, and I'm learning Python and SolidWorks.</p>
+          </div>
+        </div>
+      </section>
+
+      <section id="projects">
+        <h2>Projects</h2>
+
+        <article class="featured">
+          <h3>Rear Wing CFD Study: which wing for which circuit?</h3>
+          <p>I designed an F1-style rear wing ("Rear Wing 1.1") in Onshape and tested five configurations with CFD. Then I wrote a lap-time simulator to turn downforce and drag into seconds on five real circuits.</p>
+          <ul class="tags" aria-label="Tools">
+            <li>Onshape</li>
+            <li>OpenFOAM (steady RANS, k-ω SST)</li>
+            <li>snappyHexMesh</li>
+            <li>Python lap-time simulator</li>
+          </ul>
+
+          <p><strong>Main finding:</strong> no single rear wing is best everywhere. A Selig S1223 airfoil wing cut drag by up to 45% and reached a downforce-to-drag ratio (L/D) of 3.20. Lowering the original flap 15° cut drag by 15% while losing only 4.5% of the downforce.</p>
+
+          <div class="table-scroll">
+            <table>
+              <caption>Fastest wing per circuit type in the lap-time simulation</caption>
+              <thead>
+                <tr><th scope="col">Circuit type</th><th scope="col">Examples</th><th scope="col">Best wing</th><th scope="col">Evidence</th></tr>
+              </thead>
+              <tbody>
+                <tr><td>Low downforce, long straights</td><td>Monza, Spa</td><td>S1223 v1</td><td>−0.64 s at Monza, −0.55 s at Spa</td></tr>
+                <tr><td>Medium downforce</td><td>Silverstone, Barcelona</td><td>Flap −15°</td><td>−0.18 s at Silverstone, −0.06 s at Barcelona</td></tr>
+                <tr><td>High downforce</td><td>Hungaroring</td><td>Flap −15° or original</td><td>Tie (0.001 s apart); flap −15° has 15% less drag</td></tr>
+                <tr><td>Maximum downforce</td><td>Monaco (not simulated)</td><td>Original</td><td>Most downforce of all (2,570 N); inferred from the trend, not simulated</td></tr>
+              </tbody>
+            </table>
+          </div>
+
+          <p class="note">Limitations: the wing was simulated in free air (no car body, wheels or ground), the solver is steady RANS, and the lap-time model is a point mass with approximate F1 parameters. The results rank the wings fairly against each other but are not exact predictions for a real car. Next steps are to sweep the S1223 flap between 30° and 40° and add a simplified car body.</p>
+        </article>
+
+        <article class="project">
+          <div class="meta">Sept 2025 to Nov 2025<br>Mentor: Michel Lacerda, PhD (Lumiere Education)</div>
+          <div>
+            <h3>Wake effects of the 2025 and 2026 F1 cars</h3>
+            <p>The 2026 regulations aim to allow closer racing. I used CFD to test whether the new car leaves a less energetic wake, and proposed a simple "Wake Rating" (drag coefficient × cross-section area × peak pressure on the rear wing) to compare cars.</p>
+            <ul>
+              <li>Simulated the 2026 car in SimScale: steady RANS, 100 m/s (360 km/h), a 25.8 million cell mesh.</li>
+              <li>Results for the 2026 car: Cd = 0.678, drag force 2,837 N, cross-section area 0.70 m² (derived from the drag force), peak pressure on the rear wing 4,590 Pa. This gives a Wake Rating of about 2,174.</li>
+              <li>The 2022 to 2025 reference car scores about 3,415, so the 2026 car has a Wake Rating roughly 36% lower under the study's assumptions.</li>
+              <li>Flow visualisations agree: the wake of the older car rises straight over the rear wing, while the 2026 wake spreads more gradually.</li>
+            </ul>
+            <p class="note">The reference car was not simulated: its area is estimated by scaling the 2026 area to the 2022 width limit, and its drag coefficient is an assumed value. The Wake Rating is a comparison tool rather than an absolute physical quantity, so the 36% figure is an estimate.</p>
+            <a class="link" href="wake-effects-2025-2026.pdf">Read the paper (PDF)</a>
+          </div>
+        </article>
+
+        <article class="project">
+          <div class="meta">Mar 2025 to Nov 2025</div>
+          <div>
+            <h3>How does front wing angle affect Cd · A?</h3>
+            <p>I built a homemade wind tunnel and used a LEGO 2024 McLaren with an adjustable front wing to measure how the wing angle changes the product of drag coefficient and cross-section area.</p>
+            <ul>
+              <li>Tested 20°, 25°, 30° and 35°, with five trials per angle, filmed and timed with Tracker video analysis.</li>
+              <li>Used Newton's second law to turn the car's acceleration into Cd · A, with full uncertainty propagation (about 5%).</li>
+              <li>Found a linear relationship: Cd · A rises by about 0.000004 m² per degree (R² = 0.952).</li>
+              <li>The data looked slightly non-linear, as I had predicted, but the uncertainty was too large to confirm it. The paper lists the rig improvements that would fix this.</li>
+            </ul>
+            <a class="link" href="front-wing-aoa.pdf">Read the paper (PDF)</a>
+          </div>
+        </article>
+      </section>
+
+      <section id="experience">
+        <h2>Experience and education</h2>
+        <div class="timeline">
+          <div class="entry">
+            <div class="when">Aug 2026 to May 2030<br>Ithaca, NY</div>
+            <div>
+              <h3>B.S. in Mechanical Engineering, Cornell University</h3>
+              <p>Cornell David A. Duffield College of Engineering. Currently learning Python (CS1112).</p>
+            </div>
+          </div>
+          <div class="entry">
+            <div class="when">Remote</div>
+            <div>
+              <h3>Technical Intern, DocuBridge</h3>
+              <ul>
+                <li>Worked in a team of five on an AI-powered web tool that analyses Excel financial models (P&amp;L, balance sheet, cash flow).</li>
+                <li>Delivered four or more milestones, including backend logic, a UI prototype and API documentation, which led to the tool being implemented on DocuBridge's platform.</li>
+                <li>Worked in an agile workflow and presented the final project to the company's CEO.</li>
+              </ul>
+            </div>
+          </div>
+          <div class="entry">
+            <div class="when">Sept 2024 to May 2026<br>Barcelona, Spain</div>
+            <div>
+              <h3>International Baccalaureate</h3>
+              <p>Frederic Mistral – Tècnic Eulàlia. Physics HL, Math AA HL and Business Management SL.</p>
+            </div>
+          </div>
+          <div class="entry">
+            <div class="when">Summer 2025</div>
+            <div>
+              <h3>Harvard Undergraduate Ventures-TECH Summer Program</h3>
+              <p>Six-week entrepreneurship and emerging technology program with more than 50 international students.</p>
+            </div>
+          </div>
+          <div class="entry">
+            <div class="when">Apr 2025 to present<br>Barcelona, Spain</div>
+            <div>
+              <h3>Volunteer tutor, Narinan</h3>
+              <p>Teaching Catalan and maths to three primary school pupils, with lesson plans I design for each of them.</p>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section id="skills">
+        <h2>Skills</h2>
+        <div class="skills">
+          <div>
+            <h3>Aerodynamics and CFD</h3>
+            <ul>
+              <li>SimScale</li>
+              <li>Wind-tunnel experiments</li>
+              <li>Uncertainty analysis</li>
+            </ul>
+          </div>
+          <div>
+            <h3>Design and software</h3>
+            <ul>
+              <li>Onshape, learning SolidWorks</li>
+              <li>Python</li>
+              <li>Excel and Tracker video analysis</li>
+              <li>API and backend development</li>
+            </ul>
+          </div>
+          <div>
+            <h3>Languages</h3>
+            <ul>
+              <li>Catalan, Spanish and Italian (native)</li>
+              <li>English (C2)</li>
+              <li>French (B2)</li>
+            </ul>
+          </div>
+        </div>
+      </section>
+
+      <section id="contact" class="contact">
+        <h2>Contact</h2>
+        <p>I'm happy to talk about aerodynamics, motorsport projects and engineering teams.</p>
+        <p><a class="big" href="mailto:em943@cornell.edu">em943@cornell.edu</a></p>
+        <p><a class="link" href="https://www.linkedin.com/in/enzo-mitjavila-i-larrotcha/">LinkedIn: enzo-mitjavila-i-larrotcha</a></p>
+        <p><a class="link" href="https://github.com/enzomitjavila">github.com/enzomitjavila</a></p>
+      </section>
+    </main>
+
+    <footer>
+      <p>&copy; 2026 Enzo Mitjavila. Built with plain HTML and hosted on GitHub Pages.</p>
+    </footer>
+  </div>
+</body>
+</html>
