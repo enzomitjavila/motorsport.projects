@@ -149,6 +149,8 @@
 .figs img { width: 100%; height: auto; display: block; background: #fff; border: 1px solid var(--line); border-radius: var(--radius); }
 .figs figcaption { font-size: .93rem; color: var(--ink-2); margin-top: .6rem; max-width: 62ch; }
 .figs figcaption strong { color: var(--ink); }
+.figs.stack { grid-template-columns: 1fr; }
+.figs.narrow { max-width: 620px; }
 </style>
 </head>
 <body>
@@ -228,6 +230,13 @@
               </tbody>
             </table>
           </div>
+<h4 class="figs-title" style="font-family:Archivo,system-ui,sans-serif;font-size:1.15rem;margin:2rem 0 0;">My design in CAD</h4>
+<div class="figs stack narrow">
+<figure>
+<img src="rear-wing-cad.png" alt="Onshape CAD model of my rear wing design with its two end plates" loading="lazy">
+<figcaption><strong>Rear Wing 1.1, my design.</strong> The Onshape model of the rear wing I designed and set at a high angle, to test how a wing that lets the flow detach behaves on high-downforce tracks. The wing sits between two end plates.</figcaption>
+</figure>
+</div>
 <h4 class="figs-title" style="font-family:Archivo,system-ui,sans-serif;font-size:1.15rem;margin:2rem 0 0;">Simulation results - Visualization</h4>
 <div class="figs">
 <figure>
@@ -265,7 +274,17 @@
               <li>Flow visualisations agree: the wake of the older car rises straight over the rear wing, while the 2026 wake spreads more gradually.</li>
             </ul>
             <p class="note">The reference car was not simulated: its area is estimated by scaling the 2026 area to the 2022 width limit, and its drag coefficient is an assumed value. The Wake Rating is a comparison tool rather than an absolute physical quantity, so the 36% figure is an estimate.</p>
-            <a class="link" href="wake-effects-2025-2026.pdf">Read the paper (PDF)</a>
+            <div class="figs stack">
+<figure>
+<img src="first-cfd-test-road-car.png" alt="Surface pressure on a road car from my first CFD simulation" loading="lazy">
+<figcaption><strong>My first CFD test.</strong> Before the F1 cars, I ran my first CFD simulation on this road car (not an F1 car). The colours show surface pressure in pascals: the highest pressure (red) is at the nose, and the lowest (blue) is around the front wheels.</figcaption>
+</figure>
+<figure>
+<img src="f1-2026-streamlines.png" alt="Streamlines around the 2026 F1 car in SimScale" loading="lazy">
+<figcaption><strong>The 2026 F1 car.</strong> Streamlines around the 2026 car in SimScale, from the front of the car into the wake behind the rear wing.</figcaption>
+</figure>
+</div>
+<a class="link" href="wake-effects-2025-2026.pdf">Read the paper (PDF)</a>
           </div>
         </article>
 
@@ -280,7 +299,13 @@
               <li>Found a linear relationship: Cd · A rises by about 0.000004 m² per degree (R² = 0.952).</li>
               <li>The data looked slightly non-linear, as I had predicted, but the uncertainty was too large to confirm it. The paper lists the rig improvements that would fix this.</li>
             </ul>
-            <a class="link" href="front-wing-aoa.pdf">Read the paper (PDF)</a>
+            <div class="figs stack narrow">
+<figure>
+<img src="lego-front-wing-angle.jpg" alt="The LEGO 2024 McLaren with its adjustable front wing, with white lines marking the wing angle" loading="lazy">
+<figcaption><strong>The wind-tunnel test car.</strong> The LEGO 2024 McLaren with its adjustable front wing. The white lines mark the wing's angle of attack against the horizontal, which I changed between 20° and 35°.</figcaption>
+</figure>
+</div>
+<a class="link" href="front-wing-aoa.pdf">Read the paper (PDF)</a>
           </div>
         </article>
       </section>
