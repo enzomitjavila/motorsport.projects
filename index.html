@@ -93,6 +93,8 @@
       stroke-linecap: round; stroke-dasharray: 10 14;
       animation: drift 2.4s linear infinite;
     }
+    .airflow-photo .flow.fast { stroke: #ffe9a0; animation-duration: 1.3s; }
+    .airflow-photo .flow.loop { animation-duration: 3.2s; animation-direction: reverse; }
     @media (prefers-reduced-motion: reduce) { .airflow-photo .flow { animation: none; } }
 
     @media (prefers-reduced-motion: reduce) {
@@ -169,11 +171,14 @@
         <div class="airflow-photo">
           <img src="flow.png" alt="CFD streamlines around the rear wing">
           <svg viewBox="0 0 1050 600" aria-hidden="true">
-            <path class="flow" d="M0 60 C300 70 500 100 1050 40"/>
-            <path class="flow" d="M0 140 C250 150 350 200 450 230 S800 190 1050 120"/>
-            <path class="flow" d="M0 200 C200 205 300 270 380 262 C560 245 800 215 1050 170"/>
-            <path class="flow" d="M0 430 C200 440 330 410 420 385 C600 350 850 380 1050 340"/>
-            <path class="flow" d="M0 520 C300 520 600 500 1050 480"/>
+            <path class="flow" d="M0 30 C350 28 700 45 1050 55"/>
+            <path class="flow" d="M0 85 C250 90 420 150 540 175 C720 195 900 135 1050 95"/>
+            <path class="flow" d="M0 150 C200 152 330 205 410 232 C530 250 720 215 1050 135"/>
+            <path class="flow" d="M0 215 C150 215 260 248 340 262 C430 270 500 268 580 258 C760 238 900 195 1050 165"/>
+            <path class="flow fast" d="M0 345 C90 350 140 408 230 400 C330 392 420 362 520 337 C750 302 900 272 1050 252"/>
+            <path class="flow fast" d="M0 420 C150 425 280 422 400 396 C600 365 850 340 1050 312"/>
+            <path class="flow" d="M0 500 C300 500 650 470 1050 442"/>
+            <path class="flow loop" d="M385 292 C415 278 465 282 480 298 C462 312 420 314 395 304"/>
           </svg>
         </div>
       </div>
