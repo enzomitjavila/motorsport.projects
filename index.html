@@ -144,7 +144,12 @@
       .hero, .two-col, .project, .entry { grid-template-columns: 1fr; gap: .75rem; }
       header.site nav { gap: 1rem; }
     }
-  </style>
+  .figs { display: grid; grid-template-columns: repeat(auto-fit, minmax(320px, 1fr)); gap: 1.75rem; margin: 2rem 0 1rem; }
+.figs figure { margin: 0; }
+.figs img { width: 100%; height: auto; display: block; background: #fff; border: 1px solid var(--line); border-radius: var(--radius); }
+.figs figcaption { font-size: .93rem; color: var(--ink-2); margin-top: .6rem; max-width: 62ch; }
+.figs figcaption strong { color: var(--ink); }
+</style>
 </head>
 <body>
   <div class="wrap">
@@ -223,6 +228,26 @@
               </tbody>
             </table>
           </div>
+<h4 class="figs-title" style="font-family:Archivo,system-ui,sans-serif;font-size:1.15rem;margin:2rem 0 0;">Simulation results</h4>
+<div class="figs">
+<figure>
+<img src="s1223-v1-v2-velocity.png" alt="Velocity and streamlines around the S1223 v1 and v2 wing sections" loading="lazy">
+<figcaption><strong>Two S1223 versions compared.</strong> Velocity and streamlines through the same section for S1223 v1 (6° / 36°) and v2 (11° / 41°). The steeper v2 makes about 2% more downforce (1,855 N vs 1,820 N) but separates more flow behind the flap and has 22% more drag (694 N vs 569 N), so its L/D falls from 3.20 to 2.67.</figcaption>
+</figure>
+<figure>
+<img src="wing-section-comparison.png" alt="Cross-section of the current flap -15 degree wing in grey and the new two-element S1223 wing in red" loading="lazy">
+<figcaption><strong>Wing profile.</strong> Cross-section of the current wing (flap −15°, grey) against the new two-element S1223 wing (red), at F1 scale with the flow going left to right.</figcaption>
+</figure>
+<figure>
+<img src="wake-crossplane-80cm.png" alt="Velocity and streamlines on a plane 80 centimetres behind the rear wing, showing the wake and wing-tip vortices" loading="lazy">
+<figcaption><strong>Wake and vortices.</strong> A slice across the car 80 cm behind the wing, looking forward. The slow wake (blue-green) sits behind the wing, and the streamlines curl into a vortex at each side of it.</figcaption>
+</figure>
+<figure>
+<img src="pressure-and-velocity.png" alt="Pressure coefficient (top) and velocity with streamlines (bottom) around the wing section" loading="lazy">
+<figcaption><strong>Pressure and velocity.</strong> Pressure coefficient (top) and velocity with streamlines (bottom) on a section 10 cm from the centre. High pressure (red) builds above the wing and pushes it down, while the flow speeds up under it (yellow), where pressure drops (blue).</figcaption>
+</figure>
+</div>
+
 
           <p class="note">My design was purposely made at a high angle, in order to test how rear wings that easily let flow detach work in high downforce tracks, even though the experiment has many limitations, the results indicate in favour of my design, at least regarding raw downforce and drag values.</p>
           <p class="note">Limitations: the wing was simulated in free air (no car body, wheels or ground), the solver is steady RANS, and the lap-time model is a point mass with approximate F1 parameters. The results rank the wings fairly against each other but are not exact predictions for a real car. Next steps are to sweep the S1223 flap between 30° and 40° and add a simplified car body.</p>
